@@ -9,7 +9,7 @@ const RightSideBar = () => {
     const { user } = useSelector(store => store.auth);
 
     return (
-        <div className='w-fit my-10 pr-32'>
+        <div className=' my-10 pr-32 lg:w-[28%] '>
             
             <div className='flex items-center gap-3 h-[50px]' >
                 <Link to={`/profile/${user?._id}`}>

@@ -7,7 +7,7 @@ const Posts = () => {
   const {posts} = useSelector(store => store.post);
 
   return (
-    <div className=''>
+    <div className=' '>
       {
         posts?.map((post) => {
           return <Post key={post?._id} post={post} />

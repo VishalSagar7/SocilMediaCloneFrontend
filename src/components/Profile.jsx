@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import useGetUserProfile from '../hooks/useGetUserProfile';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Avatar } from '@mui/material';
 import { Button } from '@mui/material';
 import { Chip } from '@mui/material';
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import {Dialog} from '@mui/material';
+import CommentDialog from './CommentDialog';
+import { setSelectedPost } from '../redux/postSlice';
 
 
 
@@ -15,6 +18,8 @@ const Profile = () => {
 
   const params = useParams();
   const [activetab, setActiveTab] = useState('posts');
+  const [openCommentBox, setOpenCommentBox] = useState(false);
+  const dispatch = useDispatch();
 
   const userId = params.id;
 
@@ -28,6 +33,7 @@ const Profile = () => {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
+
 
 
 
@@ -121,6 +127,7 @@ const Profile = () => {
                     key={post?._id}
                     className='relative group cursor-pointer '
                   >
+
                     <img
                       src={post?.image}
                       className='rounded-sm my-2 w-full aspect-square object-cover'
@@ -151,6 +158,7 @@ const Profile = () => {
         </div>
 
       </div>
+
 
     </div>
   )
