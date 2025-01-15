@@ -18,7 +18,6 @@ const Profile = () => {
 
   const params = useParams();
   const [activetab, setActiveTab] = useState('posts');
-  const [openCommentBox, setOpenCommentBox] = useState(false);
   const dispatch = useDispatch();
 
   const userId = params.id;
@@ -121,7 +120,7 @@ const Profile = () => {
           </div>
           <div className='grid grid-cols-3 gap-4'>
             {
-              displayedPosts.map((post) => {
+              displayedPosts?.map((post) => {
                 return (
                   <div
                     key={post?._id}

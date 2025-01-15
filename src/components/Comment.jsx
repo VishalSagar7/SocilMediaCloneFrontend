@@ -1,6 +1,9 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
 
+
+
+
 const Comment = ({ comment }) => {
 
     
@@ -10,8 +13,7 @@ const Comment = ({ comment }) => {
               
               <Avatar sx={{ height: '25px', width: '25px' }} src={comment?.author?.profilePicture} />
               <h1 className='font-semibold text-sm'>{comment?.author?.username || comment?.author?.name}</h1>
-              <span>{ comment?.text }</span>
-              
+              <span>{ comment?.text }</span>\
           </div>
       
     </div>

@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setAuthuser } from '../redux/authSlice';
+import { setAuthuser, setSelectedUser } from '../redux/authSlice';
 import { Dialog } from '@mui/material';
 import CreatePost from './CreatePost';
 import { setPosts,setSelectedPost } from '../redux/postSlice';
@@ -24,7 +24,7 @@ import { setPosts,setSelectedPost } from '../redux/postSlice';
 const LeftSidebar = () => {
 
   const navigate = useNavigate();
-  const { user } = useSelector(store => store.auth);
+  const { user, selectedUser } = useSelector(store => store.auth);
   const dispatch = useDispatch();
   const [openCreatePost,setOpenCreatePost] = useState(false)
 
@@ -38,6 +38,7 @@ const LeftSidebar = () => {
         dispatch(setAuthuser(null));
         dispatch(setPosts(null));
         dispatch(setSelectedPost(null));
+        dispatch(setSelectedUser(null));
         navigate('/login');
         toast.success(res?.data?.message);
       }
@@ -57,7 +58,9 @@ const LeftSidebar = () => {
     } else if (textType === 'Profile') {
       navigate(`/profile/${user?._id}`);
     } else if (textType === 'Home') {
-      navigate('/')
+      navigate('/');
+    } else if (textType === "Messages") {
+      navigate('/chat');
     }
   };
 
